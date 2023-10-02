@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+    width: 200px; /* Adjust the width and height to match your blob size */
+    height: 200px;
+  }
+  
+  .blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .image {
+    position: relative;
+    z-index: 1;
+  }
