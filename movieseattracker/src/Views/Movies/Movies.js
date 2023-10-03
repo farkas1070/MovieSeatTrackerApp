@@ -22,6 +22,9 @@ const Movies = () => {
         <Navbar />
       </div>
       <div className=" relative z-20 p-0 mt-10 ">
+      <div className="relative flex items-center justify-center">
+          <p className="text-lg text-white font-semibold mb-10">Currently Available Movies</p>
+        </div>
         <div class="container grid grid-cols-3 gap-4 p-4">
           <div class="bg-white rounded-lg p-4 shadow-md">
             <img

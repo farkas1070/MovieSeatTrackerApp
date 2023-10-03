@@ -6,12 +6,12 @@ const Navbar = () => {
   return (
     <nav className="relative z-10  border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <img src={Logo} className="h-20 mr-3" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-[#C5E5DE]">
             SeatWave
           </span>
-        </a>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"

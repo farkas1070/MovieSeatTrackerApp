@@ -22,6 +22,9 @@ const Cinemas = () => {
         <Navbar />
       </div>
       <div className=" relative z-20 p-0 mt-10 ">
+        <div className="relative flex items-center justify-center">
+          <p className="text-lg text-white font-semibold mb-10">Our Cinema Partners</p>
+        </div>
         <div class="container grid grid-cols-3 gap-4 p-4">
           <div class="bg-white rounded-lg p-4 shadow-md">
             <img
@@ -30,7 +33,7 @@ const Cinemas = () => {
               class="w-full h-auto"
             />
             <h3 class="text-lg font-semibold mt-2">Big Text 1</h3>
-            <p class="text-sm text-gray-500">Small Text 1</p>
+            <p class="text-sm text-gray-500 ">Small Text 1</p>
           </div>
 
           <div class="bg-white rounded-lg p-4 shadow-md">
