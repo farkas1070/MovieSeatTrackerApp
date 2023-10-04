@@ -40,13 +40,6 @@ export default function App() {
 
   return (
     <div className="App">
-      <Movies
-        movie={selectedMovie}
-        onChange={movie => {
-          setSelectedSeats([])
-          setSelectedMovie(movie)
-        }}
-      />
       <ShowCase />
       <Cinema
         movie={selectedMovie}
