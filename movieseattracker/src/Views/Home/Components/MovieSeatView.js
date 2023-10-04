@@ -53,14 +53,6 @@ export default function App() {
         selectedSeats={selectedSeats}
         onSelectedSeatsChange={selectedSeats => setSelectedSeats(selectedSeats)}
       />
-
-      <p className="info">
-        You have selected <span className="count">{selectedSeats.length}</span>{' '}
-        seats for the price of{' '}
-        <span className="total">
-          {selectedSeats.length * selectedMovie.price}$
-        </span>
-      </p>
     </div>
   )
 }
@@ -90,13 +82,13 @@ function ShowCase() {
   return (
     <ul className="ShowCase">
       <li>
-        <span className="seat" /> <small>N/A</small>
+        <span className="seat" /> <p className='text'>Free</p>
       </li>
       <li>
-        <span className="seat selected" /> <small>Selected</small>
+        <span className="seat selected" /> <p className='text'>Selected</p>
       </li>
       <li>
-        <span className="seat occupied" /> <small>Occupied</small>
+        <span className="seat occupied" /> <p className='text'>Occupied</p>
       </li>
     </ul>
   )
