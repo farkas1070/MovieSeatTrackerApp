@@ -5,7 +5,7 @@ import Register from "../Views/Register/Register";
 import WelcomeScreen from "../Views/WelcomeScreen/WelcomeScreen";
 import Movies from "../Views/Movies/Movies";
 import Cinemas from "../Views/Cinemas/Cinemas";
-import Home from "../Views/Home/Home";
+import DashBoard from "../Views/Home/DashBoard";
 const Navigation = () => {
   return (
     <Routes>
@@ -14,7 +14,7 @@ const Navigation = () => {
       <Route path="/Register" element={<Register />}></Route>
       <Route path="/Movies" element={<Movies />}></Route>
       <Route path="/Cinemas" element={<Cinemas />}></Route>
-      <Route path="/Home" element={<Home />}></Route>
+      <Route path="/Home" element={<DashBoard />}></Route>
     </Routes>
   );
 };
