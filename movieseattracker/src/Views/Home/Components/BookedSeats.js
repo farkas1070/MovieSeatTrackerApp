@@ -3,7 +3,7 @@ import MovieSeatView from "./MovieSeatView";
 
 const BookedSeats = () => {
   return (
-    <div class="flex overflow-x-auto space-x-4">
+    <div class="flex items-center justify-center w-full ">
       
       <MovieSeatView />
     </div>
