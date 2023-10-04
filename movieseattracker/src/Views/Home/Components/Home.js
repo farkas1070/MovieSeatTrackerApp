@@ -6,6 +6,14 @@ const Home = () => {
       <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
       <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
       <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
+      <div class="flex-shrink-0 w-64 h-64 bg-white shadow-md rounded-lg p-4"></div>
       
     </div>
   );
