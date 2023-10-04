@@ -9,6 +9,7 @@ const Home = () => {
   };
   return (
     <div>
+      
       <Sidebar onSelect={handleContentSelect} />
 
       <MainContent selectedContent={selectedContent} />

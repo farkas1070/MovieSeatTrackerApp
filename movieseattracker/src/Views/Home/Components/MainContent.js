@@ -7,7 +7,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 const MainContent = ({ selectedContent }) => {
   return (
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64 bg-[#1e1f20] w-full flex min-h-screen">
       {selectedContent === "Home" && <Home />}
       {selectedContent === "Profile" && <Profile />}
       {selectedContent === "HomeMovies" && <HomeMovies />}
