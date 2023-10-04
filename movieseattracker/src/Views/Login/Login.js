@@ -5,9 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("smarton0614@gmail.com");
+  const [password, setPassword] = useState("farkas1070");
+  const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -18,14 +20,20 @@ const Login = () => {
   const showToast = () => {
     toast.error("Wrong Password, or User doesn't exist"); // Show a success toast
   };
-  
+
   const loginUser = async () => {
     try {
+      setLoading(true);
+
+      // Simulate a delay (remove this in your actual implementation)
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000); // Example: Loading state lasts for 3 seconds
       await signInWithEmailAndPassword(auth, email, password);
       handleNavigateClick();
     } catch (error) {
       if (error) {
-        showToast()
+        showToast();
       }
     }
   };
@@ -117,6 +125,11 @@ const Login = () => {
           </div>
         </div>
       </div>
+      {loading && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-400"></div>
+        </div>
+      )}
     </div>
   );
 };
