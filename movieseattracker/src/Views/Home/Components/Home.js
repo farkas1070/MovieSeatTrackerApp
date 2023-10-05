@@ -4,20 +4,11 @@ import { Carousel } from "react-responsive-carousel";
 import Page1 from "../../../Assets/Homepage/page1.jpg";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import Page3 from "../../../Assets/Homepage/page3.jpg";
+import HomeCarousel from "./HomeCarousel";
 const Home = () => {
   return (
-    <div class="flex">
-      <div></div>
-      <Carousel infiniteLoop={true} autoPlay={true} showThumbs={false} dynamicHeight={false}>
-        <div className="h-30">
-          
-          <img src={Page1} className="h-full" />
-        </div>
-        
-        <div  className="h-30" >
-          <img src={Page3}  className="h-full" />
-        </div>
-      </Carousel>
+    <div className="w-full" >
+      <HomeCarousel/>
     </div>
   );
 };
