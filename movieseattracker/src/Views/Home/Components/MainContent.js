@@ -3,7 +3,6 @@ import HomeCinemas from "./HomeCinemas";
 import HomeMovies from "./HomeMovies";
 import BookedSeats from "./BookedSeats";
 import Profile from "./Profile";
-import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 const MainContent = ({ selectedContent }) => {
   return (

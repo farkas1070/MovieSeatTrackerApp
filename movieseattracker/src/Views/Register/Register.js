@@ -5,10 +5,10 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 const Register = () => {
-  const [email, setEmail] = useState("smarton0614@gmail.com");
+  const [email, setEmail] = useState("sma");
   const [fullName, setFullName] = useState("Márton Simon");
-  const [Username, setUsername] = useState("farkas1070");
-  const [password, setPassword] = useState("farkas1070");
+  const [Username, setUsername] = useState("fark");
+  const [password, setPassword] = useState("far");
   const [loading, setLoading] = useState(false);
 
   const handleEmailChange = (event) => setEmail(event.target.value);
