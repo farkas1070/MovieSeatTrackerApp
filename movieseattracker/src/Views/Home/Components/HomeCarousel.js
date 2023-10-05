@@ -3,7 +3,7 @@ import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase-config";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const HomeCarousel = () => {
   const [movies, setMovies] = useState([]);
@@ -30,7 +30,7 @@ const HomeCarousel = () => {
     <>
       <HomeNavbar />
 
-      <div class="relative h-[30%] mt-10">
+      <div class="relative h-20 mt-10">
         <div
           class="absolute inset-0 bg-cover bg-center"
           style={{
@@ -68,24 +68,61 @@ const HomeCarousel = () => {
           Trending Movies
         </div>
         <hr class="mb-4 border-t-2 border-gray-300" />
-       
+
         <div class="flex overflow-x-auto space-x-4 justify-center">
-  {movies.map((movie) => {
-    return (
-      <Link to={`/movies/${movie.name}`}>
-      <div class="w-64 h-70">
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-          <img
-            src={movie.image}
-            alt="Movie Poster"
-            class="w-full h-full object-cover"
-          />
+          {movies.map((movie) => {
+            return (
+              <Link to={`/movies/${movie.name}`}>
+                <div class="w-64 h-70">
+                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                    <img
+                      src={movie.image}
+                      alt="Movie Poster"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
-      </Link>
-    );
-  })}
-</div>
+      <div class="text-2xl font-bold mb-4 text-white mt-20">
+        Our top Picks at the moment
+      </div>
+      <hr class="mb-4 border-t-2 border-gray-300" />
+      <div class="flex space-x-4 w-full justify-center">
+        <div class="flex mt-20 w-full justify-center">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg mr-10">
+            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 1" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">Card 1 Title</div>
+              <p class="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+
+          <div class="max-w-sm rounded overflow-hidden shadow-lg mr-10">
+            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 2" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">Card 2 Title</div>
+              <p class="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 3" />
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">Card 3 Title</div>
+              <p class="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
