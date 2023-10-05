@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase-config";
+import { Link } from 'react-router-dom';
+
 const HomeCarousel = () => {
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    const getAllDocuments = async () => {
+      const querySnapshot = await getDocs(collection(db, "Movies"));
+
+      const tempMovies = []; // Temporary array to store movie data
+
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        const movieData = doc.data();
+        tempMovies.push(movieData); // Add movie data to the temporary array
+      });
+
+      // Set the movies state with the temporary array containing movie data
+      setMovies(tempMovies);
+    };
+
+    getAllDocuments();
+  }, []);
   return (
     <>
-      <HomeNavbar/>
+      <HomeNavbar />
 
       <div class="relative h-[30%] mt-10">
         <div
@@ -40,69 +64,29 @@ const HomeCarousel = () => {
         </div>
       </div>
       <div class=" p-4">
-        <div class="text-2xl font-bold mb-4 text-white mt-5">
+        <div class="text-2xl font-bold mb-4 text-white mt-20">
           Trending Movies
         </div>
         <hr class="mb-4 border-t-2 border-gray-300" />
-
+       
         <div class="flex overflow-x-auto space-x-4 justify-center">
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
-          <div class="w-64">
-            <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img
-                src="https://i.pinimg.com/736x/8e/0d/ab/8e0dab8699be85720ce55845065bf6dc.jpg"
-                alt="Movie Poster"
-                class="w-full h-70 object-cover"
-              />
-            </div>
-          </div>
+  {movies.map((movie) => {
+    return (
+      <Link to={`/movies/${movie.name}`}>
+      <div class="w-64 h-70">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+          <img
+            src={movie.image}
+            alt="Movie Poster"
+            class="w-full h-full object-cover"
+          />
         </div>
       </div>
-      
+      </Link>
+    );
+  })}
+</div>
+      </div>
     </>
   );
 };
