@@ -27,8 +27,8 @@ const HomeMovies = () => {
     getAllDocuments();
   }, []);
   return (
-    <div className="w-full h-full">
-      <HomeNavbar/>
+    <div className="w-full h-screen">
+      <HomeNavbar />
       <div class=" p-4">
         <div class="text-2xl font-bold mb-4 text-white mt-20">
           Trending Movies
@@ -38,17 +38,22 @@ const HomeMovies = () => {
         <div class="flex overflow-x-auto space-x-4 justify-center">
           {movies.map((movie) => {
             return (
-              <Link to={`/movies/${movie.name}`}>
-                <div class="w-64 h-70">
-                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+              <div class="w-64 h-70">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                  <Link
+                    to={{
+                      pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
+                      state: { movie },
+                    }}
+                  >
                     <img
                       src={movie.image}
                       alt="Movie Poster"
                       class="w-full h-full object-cover"
                     />
-                  </div>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -62,17 +67,17 @@ const HomeMovies = () => {
         <div class="flex overflow-x-auto space-x-4 justify-center">
           {movies.map((movie) => {
             return (
-              <Link to={`/movies/${movie.name}`}>
-                <div class="w-64 h-70">
-                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+              <div class="w-64 h-70">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                  <Link to={`/movies/${movie.name}`}>
                     <img
                       src={movie.image}
                       alt="Movie Poster"
                       class="w-full h-full object-cover"
                     />
-                  </div>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

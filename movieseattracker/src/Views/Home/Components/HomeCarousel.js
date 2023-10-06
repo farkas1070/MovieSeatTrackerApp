@@ -27,12 +27,12 @@ const HomeCarousel = () => {
     getAllDocuments();
   }, []);
   return (
-    <>
+    <div>
       <HomeNavbar />
 
-      <div class="relative h-20 mt-10">
+      <div class="relative h-60 mt-10">
         <div
-          class="absolute inset-0 bg-cover bg-center"
+          class="absolute inset-0  bg-cover bg-center"
           style={{
             backgroundImage: `url(${Page2})`,
           }}
@@ -72,17 +72,17 @@ const HomeCarousel = () => {
         <div class="flex overflow-x-auto space-x-4 justify-center">
           {movies.map((movie) => {
             return (
-              <Link to={`/movies/${movie.name}`}>
-                <div class="w-64 h-70">
-                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                    <img
-                      src={movie.image}
-                      alt="Movie Poster"
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
+              <div class="w-64 h-70">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                <Link to={`/movies/${movie.name}`}>
+                  <img
+                    src={movie.image}
+                    alt="Movie Poster"
+                    class="w-full h-full object-cover"
+                  />
+                  </Link>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
@@ -94,7 +94,11 @@ const HomeCarousel = () => {
       <div class="flex space-x-4 w-full justify-center">
         <div class="flex mt-20 w-full justify-center">
           <div class="max-w-sm rounded overflow-hidden shadow-lg mr-10">
-            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 1" />
+            <img
+              class="w-full"
+              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg"
+              alt="Card 1"
+            />
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2">Card 1 Title</div>
               <p class="text-gray-700 text-base">
@@ -104,7 +108,11 @@ const HomeCarousel = () => {
           </div>
 
           <div class="max-w-sm rounded overflow-hidden shadow-lg mr-10">
-            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 2" />
+            <img
+              class="w-full"
+              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg"
+              alt="Card 2"
+            />
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2">Card 2 Title</div>
               <p class="text-gray-700 text-base">
@@ -114,7 +122,11 @@ const HomeCarousel = () => {
           </div>
 
           <div class="max-w-sm rounded overflow-hidden shadow-lg">
-            <img class="w-full" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg" alt="Card 3" />
+            <img
+              class="w-full"
+              src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kn28W24slBLyGr8ZIZnxNE5YZrY.jpg"
+              alt="Card 3"
+            />
             <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2">Card 3 Title</div>
               <p class="text-gray-700 text-base">
@@ -124,7 +136,7 @@ const HomeCarousel = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
