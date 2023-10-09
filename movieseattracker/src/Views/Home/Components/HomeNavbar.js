@@ -1,6 +1,6 @@
 import React from "react";
 
-const HomeNavbar =()=>{
+const HomeNavbar =({title})=>{
 
     return (
         <nav class="w-full">
@@ -8,7 +8,7 @@ const HomeNavbar =()=>{
           <a href="https://flowbite.com/" class="flex items-center">
             
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white text-white">
-              Home
+              {title}
             </span>
           </a>
           <div class="flex md:order-2">

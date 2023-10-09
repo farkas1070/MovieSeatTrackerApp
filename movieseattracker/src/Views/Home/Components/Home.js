@@ -48,7 +48,7 @@ const Home = () => {
     <div>
       <div class="p-2 sm:ml-64">
         <div class="p-4 rounded-lg dark:border-gray-700">
-          <HomeNavbar />
+          <HomeNavbar title="Home" />
 
           <div class="relative h-60 mt-10">
             <div

@@ -27,59 +27,92 @@ const HomeMovies = () => {
     getAllDocuments();
   }, []);
   return (
-    <div className="w-full h-screen">
-      <HomeNavbar />
-      <div class=" p-4">
+    <div className="h-full ">
+      <div class="p-2 sm:ml-64 h-full ">
+        <HomeNavbar title="Movies" />
         <div class="text-2xl font-bold mb-4 text-white mt-20">
-          Trending Movies
+          Selected For you:
         </div>
         <hr class="mb-4 border-t-2 border-gray-300" />
-
-        <div class="flex overflow-x-auto space-x-4 justify-center">
-          {movies.map((movie) => {
-            return (
-              <div class="w-64 h-70">
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                  <Link
-                    to={{
-                      pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
-                      state: { movie },
+        <div class="grid grid-cols-2 gap-4 mt-10">
+          {movies.map((movie, index) => {
+            if (index >= 0 && index <= 1) {
+              return (
+                <div className="relative h-80 rounded overflow-hidden">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-70"
+                    style={{
+                      backgroundImage: `url(${movie.image})`,
                     }}
-                  >
-                    <img
-                      src={movie.image}
-                      alt="Movie Poster"
-                      class="w-full h-full object-cover"
-                    />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div class=" p-4">
-        <div class="text-2xl font-bold mb-4 text-white mt-20">
-          Trending Movies
-        </div>
-        <hr class="mb-4 border-t-2 border-gray-300" />
+                  ></div>
 
-        <div class="flex overflow-x-auto space-x-4 justify-center">
-          {movies.map((movie) => {
-            return (
-              <div class="w-64 h-70">
-                <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                  <Link to={`/movies/${movie.name}`}>
-                    <img
-                      src={movie.image}
-                      alt="Movie Poster"
-                      class="w-full h-full object-cover"
-                    />
-                  </Link>
+                  <div className="absolute inset-0 bg-black opacity-20"></div>
+
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <p className="text-2xl text-white">{movie.name}</p>
+                  </div>
                 </div>
-              </div>
-            );
+              );
+            }
           })}
+        </div>
+        <div class=" p-4">
+          <div class="text-2xl font-bold mb-4 text-white mt-20">
+            Currently Trending:
+          </div>
+          <hr class="mb-4 border-t-2 border-gray-300" />
+
+          <div class="flex overflow-x-auto space-x-4 justify-center">
+            {movies.map((movie) => {
+              return (
+                <div class="w-64 h-70">
+                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                    <Link
+                      to={{
+                        pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
+                        state: { movie },
+                      }}
+                    >
+                      <img
+                        src={movie.image}
+                        alt="Movie Poster"
+                        class="w-full h-full object-cover"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div class=" p-4">
+          <div class="text-2xl font-bold mb-4 text-white mt-20">
+            Limited Seats:
+          </div>
+          <hr class="mb-4 border-t-2 border-gray-300" />
+
+          <div class="flex overflow-x-auto space-x-4 justify-center">
+            {movies.map((movie) => {
+              return (
+                <div class="w-64 h-70">
+                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
+                    <Link
+                      to={{
+                        pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
+                        state: { movie },
+                      }}
+                    >
+                      <img
+                        src={movie.image}
+                        alt="Movie Poster"
+                        class="w-full h-full object-cover"
+                      />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
