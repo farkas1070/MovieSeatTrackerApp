@@ -6,7 +6,7 @@ import Profile from "./Profile";
 import Home from "./Home";
 const MainContent = ({ selectedContent }) => {
   return (
-    <div class=" p-4 sm:ml-64 bg-[#1e1f20] flex h-full">
+    <div class=" p-4  bg-[#1e1f20] flex-1 h-full w-full">
       {selectedContent === "Home" && <Home />}
       {selectedContent === "Profile" && <Profile />}
       {selectedContent === "HomeMovies" && <HomeMovies />}

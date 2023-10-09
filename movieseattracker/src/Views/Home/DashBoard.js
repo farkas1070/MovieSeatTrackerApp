@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="flex h-full">
       <Sidebar onSelect={handleContentSelect} />
 
       <MainContent selectedContent={selectedContent} />
