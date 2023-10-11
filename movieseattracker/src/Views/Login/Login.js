@@ -33,6 +33,7 @@ const Login = () => {
       handleNavigateClick();
     } catch (error) {
       if (error) {
+        setLoading(false);
         showToast();
       }
     }

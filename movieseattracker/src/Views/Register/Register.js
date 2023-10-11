@@ -35,6 +35,7 @@ const Register = () => {
       handleNavigateClick();
     } catch (error) {
       console.error();
+      setLoading(false);
       showToast();
     }
   };
@@ -161,7 +162,7 @@ const Register = () => {
             }}
             className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
           >
-            Login
+            Register
           </button>
         </form>
       </div>

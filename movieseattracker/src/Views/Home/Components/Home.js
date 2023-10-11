@@ -4,7 +4,7 @@ import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import { Link } from "react-router-dom";
-
+import Card from "./Card";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [cinemas, setCinemas] = useState([]);
@@ -94,24 +94,7 @@ const Home = () => {
 
             <div class="flex overflow-x-auto space-x-4 justify-center">
               {movies.map((movie) => {
-                return (
-                  <div class="w-64 h-70">
-                    <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                      <Link
-                        to={{
-                          pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
-                          state: { movie },
-                        }}
-                      >
-                        <img
-                          src={movie.image}
-                          alt="Movie Poster"
-                          class="w-full h-full object-cover"
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                );
+                return <Card movie={movie} />;
               })}
             </div>
           </div>
@@ -130,43 +113,39 @@ const Home = () => {
                         backgroundImage: `url(${cinema.image})`, // Replace 'your-image.jpg' with your actual image URL
                       }}
                     ></div>
-  
+
                     <div className="absolute inset-0 bg-black opacity-20"></div>
-  
+
                     <div className="absolute inset-0 flex items-center justify-center">
                       <p className="text-2xl text-white">{cinema.name}</p>
                     </div>
                   </div>
                 );
               }
-              
             })}
           </div>
 
           <div class="grid grid-cols-2 gap-4">
-          {cinemas.map((cinema, index) => {
+            {cinemas.map((cinema, index) => {
               if (index >= 4 && index <= 5) {
                 return (
                   <div className="relative h-80 rounded overflow-hidden">
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-70"
-                style={{
-                  backgroundImage: `url(${cinema.image})`
-                 
-                }}
-              ></div>
+                    <div
+                      className="absolute inset-0 bg-cover bg-center opacity-70"
+                      style={{
+                        backgroundImage: `url(${cinema.image})`,
+                      }}
+                    ></div>
 
-              <div className="absolute inset-0 bg-black opacity-20"></div>
+                    <div className="absolute inset-0 bg-black opacity-20"></div>
 
-              <div className="absolute inset-0 flex items-center justify-center">
-                <p className="text-2xl text-white">{cinema.name}</p>
-              </div>
-            </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <p className="text-2xl text-white">{cinema.name}</p>
+                    </div>
+                  </div>
                 );
               }
-              
             })}
-            
           </div>
         </div>
       </div>
