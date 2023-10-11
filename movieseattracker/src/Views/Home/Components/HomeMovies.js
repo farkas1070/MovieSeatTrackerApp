@@ -28,7 +28,7 @@ const HomeMovies = () => {
   }, []);
   return (
     <div className="h-full ">
-      <div class="p-2 sm:ml-64 h-full ">
+      <div class="p-2  h-full ">
         <HomeNavbar title="Movies" />
         <div class="text-2xl font-bold mb-4 text-white mt-20">
           Selected For you:

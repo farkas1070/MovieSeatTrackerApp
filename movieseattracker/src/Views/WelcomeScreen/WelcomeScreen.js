@@ -5,6 +5,7 @@ import Form from "./Components/Form";
 import Navbar from "./Components/Navbar";
 import Illustration from "../../Assets/Register/Illustration.webp";
 import { Link } from "react-router-dom";
+import Cards from "./Components/Cards";
 const WelcomeScreen = () => {
   return (
     <div className="relative min-h-screen flex flex-col items-center ">
@@ -41,7 +42,7 @@ const WelcomeScreen = () => {
             </Link>
           </div>
           <div className="md:col-span-2  flex justify-end items-end ">
-            <div className="relative w-3/4   md:w-4/5 ">
+            <div className="relative w-3/4   md:w-5/5 ">
               <svg
                 width="100%"
                 height="100%"
@@ -65,6 +66,7 @@ const WelcomeScreen = () => {
           </div>
         </div>
       </div>
+      <Cards />
     </div>
   );
 };

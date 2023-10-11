@@ -11,7 +11,7 @@ const Home = () => {
   };
 
   return (
-    <div className="flex h-full">
+    <div className="flex overflow-y-hidden">
       <Sidebar onSelect={handleContentSelect} />
 
       <MainContent selectedContent={selectedContent} />

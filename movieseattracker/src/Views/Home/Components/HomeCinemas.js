@@ -26,7 +26,7 @@ const HomeCinemas = () => {
   ];
 
   return (
-    <div className="p-2 sm:ml-64">
+    <div className="p-2 ">
       <Carousel
         transition={{ duration: 2 }}
         className="rounded-xl"
