@@ -4,7 +4,7 @@ import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase-config";
 import { Link } from "react-router-dom";
-
+import Card from "./Card"
 const HomeMovies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -56,6 +56,9 @@ const HomeMovies = () => {
             }
           })}
         </div>
+        <div>
+          
+        </div>
         <div class=" p-4">
           <div class="text-2xl font-bold mb-4 text-white mt-20">
             Currently Trending:
@@ -64,24 +67,7 @@ const HomeMovies = () => {
 
           <div class="flex overflow-x-auto space-x-4 justify-center">
             {movies.map((movie) => {
-              return (
-                <div class="w-64 h-70">
-                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                    <Link
-                      to={{
-                        pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
-                        state: { movie },
-                      }}
-                    >
-                      <img
-                        src={movie.image}
-                        alt="Movie Poster"
-                        class="w-full h-full object-cover"
-                      />
-                    </Link>
-                  </div>
-                </div>
-              );
+              return <Card movie={movie} />;
             })}
           </div>
         </div>
@@ -93,24 +79,7 @@ const HomeMovies = () => {
 
           <div class="flex overflow-x-auto space-x-4 justify-center">
             {movies.map((movie) => {
-              return (
-                <div class="w-64 h-70">
-                  <div class="bg-white shadow-lg rounded-lg overflow-hidden h-full">
-                    <Link
-                      to={{
-                        pathname: `/movies/${movie.name}`, // Adjust the pathname as needed
-                        state: { movie },
-                      }}
-                    >
-                      <img
-                        src={movie.image}
-                        alt="Movie Poster"
-                        class="w-full h-full object-cover"
-                      />
-                    </Link>
-                  </div>
-                </div>
-              );
+              return <Card movie={movie} />;
             })}
           </div>
         </div>
