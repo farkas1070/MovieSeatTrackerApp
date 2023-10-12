@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HomeCinemas from "./HomeCinemas";
 import HomeMovies from "./HomeMovies";
-
+import MovieDetail from "../../MovieDetail/MovieDetail";
 import Home from "./Home";
 const MainContent = ({ selectedContent }) => {
   return (
@@ -9,6 +9,7 @@ const MainContent = ({ selectedContent }) => {
       {selectedContent === "Home" && <Home />}
       {selectedContent === "HomeMovies" && <HomeMovies />}
       {selectedContent === "HomeCinemas" && <HomeCinemas />}
+      {selectedContent === "MovieDetail" && <MovieDetail />}
     </div>
   );
 };

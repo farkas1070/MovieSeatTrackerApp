@@ -1,12 +1,11 @@
 import React from "react";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "../Views/Login/Login";
 import Register from "../Views/Register/Register";
 import WelcomeScreen from "../Views/WelcomeScreen/WelcomeScreen";
 import Movies from "../Views/Movies/Movies";
 import Cinemas from "../Views/Cinemas/Cinemas";
 import DashBoard from "../Views/Home/DashBoard";
-import MovieDetail from "../Views/MovieDetail/MovieDetail";
 
 const Navigation = () => {
   return (
@@ -17,7 +16,7 @@ const Navigation = () => {
       <Route path="/Movies" element={<Movies />}></Route>
       <Route path="/Cinemas" element={<Cinemas />}></Route>
       <Route path="/Home" element={<DashBoard />}></Route>
-      <Route path="/movies/:movieName" element={<MovieDetail />}></Route>
+      
     </Routes>
   );
 };
