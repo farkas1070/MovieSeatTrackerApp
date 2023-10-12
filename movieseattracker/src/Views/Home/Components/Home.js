@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase-config";
+import { db,auth } from "../../../firebase-config";
 import { Link } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
 import Card from "./Card";
+import { UserTypeContext } from "../../../Context/GlobalContext";
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [cinemas, setCinemas] = useState([]);
+  const [userType, setUserType] = useContext(UserTypeContext);
   useEffect(() => {
     const getAllMovies = async () => {
       const querySnapshot = await getDocs(collection(db, "Movies"));
@@ -44,9 +46,15 @@ const Home = () => {
     };
 
     getAllCinemas();
+    
+    const checkForAdmin =()=>{
+      const AdminUID = "ur6xbOQZSha4wYX5bCfHVvs4MaE3"
+      auth.currentUser.uid = AdminUID ? setUserType("Admin") : setUserType("Regular")
+    }
+    checkForAdmin();
   }, []);
   return (
-    <div class="p-0 homepage-background">
+    <div class="p-0">
       
 
       <div class="p-4 rounded-lg dark:border-gray-700">

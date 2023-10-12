@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Card,
   Typography,
@@ -13,15 +13,7 @@ import {
   Alert,
   Input,
 } from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  UserGroupIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
+import { UserTypeContext } from "../../../Context/GlobalContext";
 import {
   ChevronRightIcon,
   ChevronDownIcon,
@@ -32,7 +24,7 @@ import Logo from "../../../Assets/Register/Logo.png";
 const SidebarWithSearch = ({ onSelect }) => {
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
-
+  const [userType, setUserType] = useContext(UserTypeContext);
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
@@ -68,7 +60,7 @@ const SidebarWithSearch = ({ onSelect }) => {
             />
           }
         >
-          <ListItem className="p-0 text-white" selected={open === 2} >
+          <ListItem className="p-0 text-white" selected={open === 2}>
             <AccordionHeader
               onClick={() => handleOpen(2)}
               className="border-b-0 p-3"
@@ -91,9 +83,12 @@ const SidebarWithSearch = ({ onSelect }) => {
           </ListItem>
           <AccordionBody className="py-1">
             <List className="p-0">
-              <ListItem className="text-white" onClick={() => {
+              <ListItem
+                className="text-white"
+                onClick={() => {
                   onSelect("Profile");
-                }}>
+                }}
+              >
                 <ListItemPrefix>
                   <ChevronRightIcon
                     strokeWidth={3}
@@ -106,9 +101,12 @@ const SidebarWithSearch = ({ onSelect }) => {
           </AccordionBody>
         </Accordion>
         <hr className="my-2 border-white-50" />
-        <ListItem className="text-white" onClick={() => {
-                  onSelect("Home");
-                }}>
+        <ListItem
+          className="text-white"
+          onClick={() => {
+            onSelect("Home");
+          }}
+        >
           <ListItemPrefix>
             <svg
               class="w-5 h-5 mr-3 text-white transition duration-75 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white"
@@ -132,9 +130,12 @@ const SidebarWithSearch = ({ onSelect }) => {
             />
           </ListItemSuffix>
         </ListItem>
-        <ListItem className="text-white" onClick={() => {
-                  onSelect("HomeMovies");
-                }}>
+        <ListItem
+          className="text-white"
+          onClick={() => {
+            onSelect("HomeMovies");
+          }}
+        >
           <ListItemPrefix>
             <svg
               class="mr-3  flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white"
@@ -148,9 +149,12 @@ const SidebarWithSearch = ({ onSelect }) => {
           </ListItemPrefix>
           Movies
         </ListItem>
-        <ListItem className="text-white" onClick={() => {
-                  onSelect("HomeCinemas");
-                }}>
+        <ListItem
+          className="text-white"
+          onClick={() => {
+            onSelect("HomeCinemas");
+          }}
+        >
           <ListItemPrefix>
             <svg
               class="mr-3  flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white"
@@ -164,6 +168,37 @@ const SidebarWithSearch = ({ onSelect }) => {
           </ListItemPrefix>
           Cinemas
         </ListItem>
+        {userType === "Admin" && (
+          <ListItem
+            className="text-white"
+            onClick={() => {
+              onSelect("AddMovie");
+            }}
+          >
+            <ListItemPrefix>
+              <svg
+                class="mr-3  flex-shrink-0 w-5 h-5 text-white transition duration-75 dark:text-white group-hover:text-gray-900 dark:group-hover:text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                id="Layer_1"
+                data-name="Layer 1"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="m18,22c0,.553-.448,1-1,1H5c-2.761,0-5-2.239-5-5v-7.764c0-1.136.486-2.223,1.333-2.981.293-.263.715-.329,1.075-.168.36.161.592.519.592.913v6.5c0,3.59,2.91,6.5,6.5,6.5h7.5c.552,0,1,.447,1,1Zm6-16.5v9c0,2.481-2.019,4.5-4.5,4.5h-10c-2.481,0-4.5-2.019-4.5-4.5V5.5c0-2.481,2.019-4.5,4.5-4.5h10c2.481,0,4.5,2.019,4.5,4.5Zm-2,7.5v-2h-2v2h2Zm-2-4h2v-2h-2v2Zm0-5.95v1.95h1.95c-.199-.978-.972-1.75-1.95-1.95Zm-13,3.95v2h2v-2h-2Zm0,6h2v-2h-2v2Zm.05-8h1.95v-1.95c-.978.199-1.75.971-1.95,1.95Zm1.95,11.95v-1.95h-1.95c.199.978.972,1.75,1.95,1.95Zm12.95-1.95h-1.95v1.95c.978-.199,1.75-.971,1.95-1.95Z" />
+              </svg>
+            </ListItemPrefix>
+            Add New Movie
+            <ListItemSuffix>
+              <Chip
+                value="14"
+                size="sm"
+                variant="ghost"
+                color="white"
+                className="rounded-full"
+              />
+            </ListItemSuffix>
+          </ListItem>
+        )}
       </List>
       <Alert
         open={openAlert}

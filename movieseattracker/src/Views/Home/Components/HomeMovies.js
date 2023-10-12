@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../../firebase-config";
+import { db,auth } from "../../../firebase-config";
 import { Link } from "react-router-dom";
+
 import Card from "./Card"
 const HomeMovies = () => {
   const [movies, setMovies] = useState([]);
@@ -24,7 +25,8 @@ const HomeMovies = () => {
       setMovies(tempMovies);
     };
 
-    getAllDocuments();
+    getAllDocuments()
+
   }, []);
   return (
     <div className="h-full ">

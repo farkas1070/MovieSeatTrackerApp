@@ -1,6 +1,7 @@
 import { Chip } from "@material-tailwind/react";
 
 const MovieGenresChips = ({ genres }) => {
+    
   // Split the genres string into an array using the "|" delimiter
   const genreArray = genres.split("|");
     console.log(genreArray)
