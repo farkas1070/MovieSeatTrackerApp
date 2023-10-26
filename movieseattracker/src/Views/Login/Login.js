@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import Loginpic from "../../Assets/Login/Login.jpg";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase-config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "../../Context/GlobalContext";
 
 const Login = () => {
-  const [email, setEmail] = useState("smarton0614@gmail.com");
-  const [password, setPassword] = useState("farkas1070");
+  const [email, setEmail] = useState("valaki12@gmail.com");
+  const [password, setPassword] = useState("valaki12");
   const [loading, setLoading] = useState(false);
-
+  const [, setUser] = useContext(UserContext);
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
 
@@ -20,7 +21,10 @@ const Login = () => {
   const showToast = () => {
     toast.error("Wrong Password, or User doesn't exist"); // Show a success toast
   };
-
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+  
   const loginUser = async () => {
     try {
       setLoading(true);

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
-import { db,auth } from "../../../firebase-config";
+import { db, auth } from "../../../firebase-config";
 import { Link } from "react-router-dom";
 
-import Card from "./Card"
+import Card from "./Card";
 const HomeMovies = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -16,7 +16,7 @@ const HomeMovies = () => {
 
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        
         const movieData = doc.data();
         tempMovies.push(movieData); // Add movie data to the temporary array
       });
@@ -25,8 +25,7 @@ const HomeMovies = () => {
       setMovies(tempMovies);
     };
 
-    getAllDocuments()
-
+    getAllDocuments();
   }, []);
   return (
     <div className="h-full ">
@@ -58,9 +57,7 @@ const HomeMovies = () => {
             }
           })}
         </div>
-        <div>
-          
-        </div>
+        <div></div>
         <div class=" p-4">
           <div class="text-2xl font-bold mb-4 text-white mt-20">
             Currently Trending:

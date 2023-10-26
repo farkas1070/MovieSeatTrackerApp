@@ -1,8 +1,8 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
 import { collection, getDocs } from "firebase/firestore";
-import { db,auth } from "../../../firebase-config";
+import { db, auth } from "../../../firebase-config";
 import { Link } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
 import Card from "./Card";
@@ -19,7 +19,7 @@ const Home = () => {
 
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+
         const movieData = doc.data();
         tempMovies.push(movieData); // Add movie data to the temporary array
       });
@@ -36,7 +36,7 @@ const Home = () => {
 
       querySnapshot.forEach((doc) => {
         // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+
         const movieData = doc.data();
         tempCinemas.push(movieData); // Add movie data to the temporary array
       });
@@ -46,17 +46,18 @@ const Home = () => {
     };
 
     getAllCinemas();
-    
-    const checkForAdmin =()=>{
-      const AdminUID = "ur6xbOQZSha4wYX5bCfHVvs4MaE3"
-      auth.currentUser.uid = AdminUID ? setUserType("Admin") : setUserType("Regular")
-    }
+
+    const checkForAdmin = () => {
+      const AdminUID = "ur6xbOQZSha4wYX5bCfHVvs4MaE3";
+
+      auth.currentUser.uid == AdminUID
+        ? setUserType("Admin")
+        : setUserType("Regular");
+    };
     checkForAdmin();
   }, []);
   return (
     <div class="p-0">
-      
-
       <div class="p-4 rounded-lg dark:border-gray-700">
         <HomeNavbar title="Home" />
 

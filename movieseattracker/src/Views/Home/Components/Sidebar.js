@@ -20,15 +20,17 @@ import {
   CubeTransparentIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../../Assets/Register/Logo.png";
 const SidebarWithSearch = ({ onSelect }) => {
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [userType, setUserType] = useContext(UserTypeContext);
+  const navigate = useNavigate();
   const handleOpen = (value) => {
+
     setOpen(open === value ? 0 : value);
   };
-
   return (
     <Card
       style={{ borderRadius: 0 }}
@@ -86,7 +88,7 @@ const SidebarWithSearch = ({ onSelect }) => {
               <ListItem
                 className="text-white"
                 onClick={() => {
-                  onSelect("Profile");
+                  navigate('/Home')
                 }}
               >
                 <ListItemPrefix>
@@ -188,15 +190,7 @@ const SidebarWithSearch = ({ onSelect }) => {
               </svg>
             </ListItemPrefix>
             Add New Movie
-            <ListItemSuffix>
-              <Chip
-                value="14"
-                size="sm"
-                variant="ghost"
-                color="white"
-                className="rounded-full"
-              />
-            </ListItemSuffix>
+           
           </ListItem>
         )}
       </List>

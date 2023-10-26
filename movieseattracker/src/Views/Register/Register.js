@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import VideoFootage from "../../Assets/Videos/RegisterVideo.mp4";
-import { auth } from "../../firebase-config";
+import { auth,db } from "../../firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { doc, setDoc } from "firebase/firestore";
 const Register = () => {
   const [email, setEmail] = useState("sma");
   const [fullName, setFullName] = useState("Márton Simon");
@@ -21,6 +22,24 @@ const Register = () => {
   const showToast = () => {
     toast.error("Email already in use"); // Show a success toast
   };
+  const UploadData = async () => {
+    const userRef = doc(db, "Users", auth.currentUser.uid);
+    setDoc(userRef, {
+      email:email,
+      username: Username,
+      fullname: fullName,
+      password:password,
+      uid: auth.currentUser.uid
+
+    })
+      .then(() => {
+        console.log("Document updated successfully");
+      })
+      .catch((error) => {
+        console.error("Error updating document: ", error);
+      });
+  };
+
   const registerUser = async () => {
     try {
       setLoading(true);
@@ -31,7 +50,7 @@ const Register = () => {
       }, 3000); // Example: Loading state lasts for 3 seconds
       await createUserWithEmailAndPassword(auth, email, password);
       // You can also update user profile data like displayName
-
+      UploadData();
       handleNavigateClick();
     } catch (error) {
       console.error();

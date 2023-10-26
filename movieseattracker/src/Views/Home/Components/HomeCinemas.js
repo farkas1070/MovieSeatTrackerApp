@@ -58,6 +58,7 @@ const HomeCinemas = () => {
           </div>
         ))}
       </Carousel>
+      
     </div>
   );
 };

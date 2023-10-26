@@ -1,6 +1,6 @@
 // Import required modules
 const express = require('express');
-
+const {db} = require('../src/firebase-config')
 // Create an Express application
 const app = express();
 
