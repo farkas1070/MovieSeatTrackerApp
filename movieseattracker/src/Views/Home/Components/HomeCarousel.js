@@ -7,19 +7,19 @@ const HomeCinemas = () => {
   const carouselItems = [
     {
       src:
-        "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80",
+        "https://tourism.seefeld.com/media/infrastructure/animation/kino-seefeld.jpg",
       alt: "image 1",
       text: "Find Cinemas Next To You", // Add your text here
     },
     {
       src:
-        "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80",
+        "https://www.schladming-dachstein.at/Easy-Edit-Mode/kino%40dirninger.com/A-Z/Kino%20Gröbming-341479/3855991616-CHF_20180413_105353b.jpg",
       alt: "image 2",
       text: "Find With Limited Seats", // Add your text here
     },
     {
       src:
-        "https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80",
+        "https://upload.wikimedia.org/wikipedia/commons/4/4e/Stadium_seating_digital_cinema.jpg",
       alt: "image 3",
       text: "Search For Best Deals", // Add your text here
     },

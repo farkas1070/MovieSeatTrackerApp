@@ -17,7 +17,7 @@ const MovieDetail = () => {
   const [selectedMovie, setSelectedMovie] = useContext(SingleMovieContext);
   console.log(selectedMovie)
   return (
-    <Card className="w-full bg-[#1e1f20] overflow-y-auto">
+    <Card className="w-full bg-[#1e1f20] overflow-y-auto h-full">
       <CardHeader shadow={false} floated={false} className="h-96 relative">
         <MovieHeader selectedMovie={selectedMovie}></MovieHeader>
       </CardHeader>

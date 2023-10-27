@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import React,{useContext} from "react";
-import { ViewContext,SingleMovieContext } from "../../../Context/GlobalContext";
+import React, { useContext } from "react";
+import {
+  ViewContext,
+  SingleMovieContext,
+} from "../../../Context/GlobalContext";
 import { Chip } from "@material-tailwind/react";
 const Card = ({ movie }) => {
   const [selectedContent, setSelectedContent] = useContext(ViewContext);
@@ -9,15 +12,19 @@ const Card = ({ movie }) => {
   return (
     <div class=" relative  justify-center overflow-hidden w-40">
       <div class="absolute inset-0 bg-center dark:bg-black"></div>
-      <button onClick={()=>{setSelectedContent("MovieDetail");setSelectedMovie(movie) }} class="text-left group relative m-0 flex h-80 rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg">
+      <button
+        onClick={() => {
+          setSelectedContent("MovieDetail");
+          setSelectedMovie(movie);
+        }}
+        class="text-left group relative m-0 flex h-80 rounded-xl shadow-xl ring-gray-900/5 sm:mx-auto sm:max-w-lg"
+      >
         <div class="z-10 h-full w-full overflow-hidden rounded-xl  opacity-70 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-90">
-          
-            <img
-              src={movie.image}
-              class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-80 transition duration-300 group-hover:scale-110"
-              alt="sdsad"
-            />
-          
+          <img
+            src={movie.image}
+            class="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-80 transition duration-300 group-hover:scale-110"
+            alt="sdsad"
+          />
         </div>
         <div class="absolute bottom-0 z-20 m-0 pb-4 ps-2 transition duration-300 ease-in-out group-hover:-translate-y-1 group-hover:translate-x-3 group-hover:scale-110">
           <h1 class="font-serif text-2xl font-bold text-white shadow-xl">

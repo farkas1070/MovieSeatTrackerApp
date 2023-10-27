@@ -6,11 +6,18 @@ import { db, auth } from "../../../firebase-config";
 import { Link } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
 import Card from "./Card";
-import { UserTypeContext } from "../../../Context/GlobalContext";
+import {
+  UserTypeContext,
+  ViewContext,
+  SelectedCinemaContext,
+} from "../../../Context/GlobalContext";
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [cinemas, setCinemas] = useState([]);
+  const [selectedContent, setSelectedContent] = useContext(ViewContext);
   const [userType, setUserType] = useContext(UserTypeContext);
+  const [selectedCinema, setSelectedCinema] = useContext(SelectedCinemaContext);
   useEffect(() => {
     const getAllMovies = async () => {
       const querySnapshot = await getDocs(collection(db, "Movies"));
@@ -83,20 +90,26 @@ const Home = () => {
           {cinemas.map((cinema, index) => {
             if (index >= 0 && index <= 3) {
               return (
-                <div className="relative h-60 rounded overflow-hidden">
+                <button
+                  className="relative h-60 rounded overflow-hidden transition-transform hover:scale-105"
+                  onClick={() => {
+                    setSelectedContent("CinemaView");
+                    setSelectedCinema(cinema);
+                  }}
+                >
                   <div
-                    className="absolute inset-0 bg-cover bg-center opacity-70"
+                    className="absolute inset-0 bg-cover bg-center opacity-70 "
                     style={{
-                      backgroundImage: `url(${cinema.image})`, // Replace 'your-image.jpg' with your actual image URL
+                      backgroundImage: `url(${cinema.image})`,
                     }}
                   ></div>
 
-                  <div className="absolute inset-0 bg-black opacity-20"></div>
+                  <div className="absolute inset-0 bg-black opacity-20 transition duration-300 ease-in-out group-hover:opacity-100"></div>
 
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="text-2xl text-white">{cinema.name}</p>
                   </div>
-                </div>
+                </button>
               );
             }
           })}
@@ -106,7 +119,13 @@ const Home = () => {
           {cinemas.map((cinema, index) => {
             if (index >= 4 && index <= 5) {
               return (
-                <div className="relative h-80 rounded overflow-hidden">
+                <button
+                  className="relative h-80 rounded overflow-hidden transition-transform hover:scale-105"
+                  onClick={() => {
+                    setSelectedContent("CinemaView");
+                    setSelectedCinema(cinema);
+                  }}
+                >
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-70"
                     style={{
@@ -119,7 +138,7 @@ const Home = () => {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="text-2xl text-white">{cinema.name}</p>
                   </div>
-                </div>
+                </button>
               );
             }
           })}

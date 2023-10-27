@@ -16,40 +16,22 @@ import {
   setDoc,
   deleteDoc,
   getDocs,
+  updateDoc
 } from "firebase/firestore";
 import { auth, db } from "../../../firebase-config";
 import { SingleMovieContext } from "../../../Context/GlobalContext";
-const movies = [
-  {
-    name: "Avenger",
-    price: 10,
-    occupied: [20, 21, 30, 1, 2, 8],
-  },
-  {
-    name: "Joker",
-    price: 12,
-    occupied: [9, 41, 35, 11, 65, 26],
-  },
-  {
-    name: "Toy story",
-    price: 8,
-    occupied: [37, 25, 44, 13, 2, 3],
-  },
-  {
-    name: "the lion king",
-    price: 9,
-    occupied: [10, 12, 50, 33, 28, 47],
-  },
-];
+
 
 const seats = Array.from({ length: 8 * 8 }, (_, i) => i);
 
 export default function App() {
-  const [selectedMovie, setSelectedMovie] = useState(movies[0]);
+  
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [passedMovie, setPassedMovie] = useContext(SingleMovieContext);
   const [seats, setSeats] = useState([]);
+  const [selectedASeat, setSelectedASeat] =useState(false)
   const [cinemas, setCinemas] = useState([]);
+  
   useEffect(() => {
     const getSeats = async () => {
       const generalQuery = query(
@@ -59,9 +41,9 @@ export default function App() {
       const generalSnapshot = await getDocs(generalQuery);
       const generalData = generalSnapshot.docs.map((doc) => {
         const subdata = doc.data();
-        return { ...subdata };
+        return { ...subdata, docId: doc.id };
       });
-      console.log(generalData.length);
+      console.log(generalData);
 
       setSeats(generalData);
     };
@@ -88,13 +70,16 @@ export default function App() {
     <div className="App mt-20">
       <ShowCase />
       <Cinema
-        movie={selectedMovie}
+        movie={passedMovie}
         seats={seats}
+        
         selectedSeats={selectedSeats}
         onSelectedSeatsChange={(selectedSeats) =>
           setSelectedSeats(selectedSeats)
+        
         }
       />
+      
     </div>
   );
 }
@@ -123,6 +108,13 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange, seats }) {
       onSelectedSeatsChange([...selectedSeats, seat]);
     }
   }
+  const saveSeat=async(seat)=>{
+    const seatRef = doc(db, "Seats", seat.docId);
+    await updateDoc(seatRef, {
+      occupied: true
+    });
+
+  }
 
   return (
     <div className="Cinema">
@@ -131,7 +123,7 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange, seats }) {
       <div className="seats">
         {seats.map((seat) => {
           const isSelected = selectedSeats.includes(seat);
-          const isOccupied = movie.occupied.includes(seat);
+          const isOccupied = seat.occupied;
           return (
             <span
               tabIndex="0"
@@ -141,13 +133,14 @@ function Cinema({ movie, selectedSeats, onSelectedSeatsChange, seats }) {
                 isSelected && "selected",
                 isOccupied && "occupied"
               )}
-              onClick={isOccupied ? null : () => handleSelectedState(seat)}
+              onClick={isOccupied ? null : () => {handleSelectedState(seat);saveSeat(seat)}}
               onKeyPress={
                 isOccupied
                   ? null
                   : (e) => {
                       if (e.key === "Enter") {
                         handleSelectedState(seat);
+                        
                       }
                     }
               }
