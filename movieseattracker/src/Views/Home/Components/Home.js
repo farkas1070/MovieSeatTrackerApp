@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Page2 from "../../../Assets/Homepage/page2.jpg";
 import HomeNavbar from "./HomeNavbar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs,doc, updateDoc } from "firebase/firestore";
 import { db, auth } from "../../../firebase-config";
-import { Link } from "react-router-dom";
+
 import HomeCarousel from "./HomeCarousel";
 import Card from "./Card";
 import {
@@ -15,6 +15,7 @@ import {
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [cinemas, setCinemas] = useState([]);
+  const [seats,setSeats] = useState([]);
   const [selectedContent, setSelectedContent] = useContext(ViewContext);
   const [userType, setUserType] = useContext(UserTypeContext);
   const [selectedCinema, setSelectedCinema] = useContext(SelectedCinemaContext);
@@ -53,6 +54,9 @@ const Home = () => {
     };
 
     getAllCinemas();
+    
+
+    
 
     const checkForAdmin = () => {
       const AdminUID = "ur6xbOQZSha4wYX5bCfHVvs4MaE3";

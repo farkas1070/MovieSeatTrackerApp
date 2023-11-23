@@ -1,18 +1,42 @@
-// Import required modules
 const express = require('express');
-const {db} = require('../src/firebase-config')
-// Create an Express application
-const app = express();
+const admin = require('firebase-admin');
 
-// Define a route (e.g., a simple "Hello, World!" route)
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+// Your Firebase project configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDqKyAesm4g-gJP_lBy-Gt1vCuGNjGC1pU",
+  authDomain: "movieseattacker.firebaseapp.com",
+  projectId: "movieseattacker",
+  storageBucket: "movieseattacker.appspot.com",
+  messagingSenderId: "415433014794",
+  appId: "1:415433014794:web:06d9e532872dc8319be9f3",
+  measurementId: "G-G0D56H66E4",
+};
+
+// Initialize Firebase Admin SDK
+admin.initializeApp({
+  credential: admin.credential.cert(require('./credentials/movieseattacker-firebase-adminsdk-c6tst-d54693fa2e.json')),
+  databaseURL: `https://${firebaseConfig.projectId}.firebaseio.com`,
 });
 
-// Define the port to listen on
+const app = express();
+
+// Define a route to get data from Firestore
+app.get('/getData', async (req, res) => {
+  try {
+    const firestore = admin.firestore();
+    const data = await firestore.collection('Movies').get();
+
+    // Process the data as needed and send it as the response
+    const responseData = data.docs.map(doc => doc.data());
+    res.json(responseData);
+  } catch (error) {
+    console.error('Error getting data from Firestore', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 const port = process.env.PORT || 3000;
 
-// Start the server and listen on the specified port
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
