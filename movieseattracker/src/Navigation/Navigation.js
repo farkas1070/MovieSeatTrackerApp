@@ -16,6 +16,7 @@ const Navigation = () => {
       <Route path="/Movies" element={<Movies />}></Route>
       <Route path="/Cinemas" element={<Cinemas />}></Route>
       <Route path="/Home" element={<DashBoard />}></Route>
+      <Route path="/Seat" element={<DashBoard />}></Route>
       
     </Routes>
   );

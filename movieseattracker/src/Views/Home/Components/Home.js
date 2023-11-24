@@ -58,14 +58,9 @@ const Home = () => {
 
     
 
-    const checkForAdmin = () => {
-      const AdminUID = "ur6xbOQZSha4wYX5bCfHVvs4MaE3";
-
-      auth.currentUser.uid == AdminUID
-        ? setUserType("Admin")
-        : setUserType("Regular");
-    };
-    checkForAdmin();
+    
+    
+    
   }, []);
   return (
     <div class="p-0">
